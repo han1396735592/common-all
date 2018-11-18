@@ -5,11 +5,19 @@
     <parent>
         <artifactId>common-all</artifactId>
         <groupId>cn.qqhxj.common</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${global.version}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>common-web</artifactId>
-
-
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/30098-release-BFRUs3/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/30098-snapshot-zqJT7m/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

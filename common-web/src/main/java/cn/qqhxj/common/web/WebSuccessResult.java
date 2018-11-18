@@ -4,7 +4,7 @@ package cn.qqhxj.common.web;
  * @author han xinjian
  * @date 2018-11-17 22:53
  **/
-public class WebSuccessResult <T> implements WebSesult<T> {
+public class WebSuccessResult<T> implements WebResult<T> {
 
     private boolean success;
 

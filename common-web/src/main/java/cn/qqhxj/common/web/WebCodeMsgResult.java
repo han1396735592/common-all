@@ -4,7 +4,7 @@ package cn.qqhxj.common.web;
  * @author han xinjian
  * @date 2018-11-17 22:52
  **/
-public class WebCodeMsgResult<T> implements WebSesult<T> {
+public class WebCodeMsgResult<T> implements WebResult<T> {
 
     private Integer code;
 

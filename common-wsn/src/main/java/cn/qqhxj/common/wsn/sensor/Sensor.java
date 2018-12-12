@@ -1,7 +1,7 @@
 package cn.qqhxj.common.wsn.sensor;
 
-import cn.qqhxj.websockerdome.wsn.SensorDataInfo;
-import cn.qqhxj.websockerdome.wsn.SensorType;
+import cn.qqhxj.common.wsn.SensorDataInfo;
+import cn.qqhxj.common.wsn.SensorType;
 import lombok.Data;
 
 /**

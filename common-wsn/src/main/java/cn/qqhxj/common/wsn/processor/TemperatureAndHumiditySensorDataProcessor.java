@@ -1,6 +1,7 @@
 package cn.qqhxj.common.wsn.processor;
 
-import cn.qqhxj.websockerdome.wsn.sensor.TemperatureAndHumiditySensor;
+
+import cn.qqhxj.common.wsn.sensor.TemperatureAndHumiditySensor;
 
 /**
  * @author han xinjian

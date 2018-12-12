@@ -1,7 +1,7 @@
 package cn.qqhxj.common.wsn.processor;
 
 import cn.qqhxj.common.core.SerialDataProcessor;
-import cn.qqhxj.websockerdome.wsn.sensor.Sensor;
+import cn.qqhxj.common.wsn.sensor.Sensor;
 
 /**
  * @author han xinjian

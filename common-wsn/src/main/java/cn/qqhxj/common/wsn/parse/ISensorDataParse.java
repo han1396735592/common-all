@@ -1,6 +1,5 @@
 package cn.qqhxj.common.wsn.parse;
 
-
 import cn.qqhxj.common.core.SerialDataParser;
 import cn.qqhxj.common.wsn.sensor.Sensor;
 

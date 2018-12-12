@@ -7,7 +7,7 @@ package cn.qqhxj.common.web;
 public interface WebResult<T> {
 
     /**
-     *  获取返回的书
+     *  获取返回的数据
      * @return 数据
      */
     T getData();

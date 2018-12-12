@@ -6,15 +6,13 @@
 
     <groupId>cn.qqhxj.common</groupId>
     <artifactId>common-all</artifactId>
-    <version>${global.version}</version>
+    <version>1.0-RELEASES</version>
     <modules>
         <module>common-web</module>
+        <module>common-rxtx</module>
+        <module>common-wsn</module>
     </modules>
     <packaging>pom</packaging>
-
-    <properties>
-        <global.version>0.1-RELEASES</global.version>
-    </properties>
 
     <distributionManagement>
         <repository>

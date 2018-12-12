@@ -27,7 +27,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.qqhxj.common</groupId>
-            <artifactId>rxtx-common</artifactId>
+            <artifactId>common-rxtx</artifactId>
             <version>1.0-RELEASES</version>
         </dependency>
         <dependency>

@@ -1,8 +1,8 @@
-package cn.qqhxj.common;
+package cn.qqhxj.common.rxtx;
 
-import cn.qqhxj.common.ReaderAndWrite.SerialReader;
-import cn.qqhxj.common.core.SerialDataParser;
-import cn.qqhxj.common.core.SerialDataProcessor;
+import cn.qqhxj.common.rxtx.ReaderAndWrite.SerialReader;
+import cn.qqhxj.common.rxtx.core.SerialDataParser;
+import cn.qqhxj.common.rxtx.core.SerialDataProcessor;
 import gnu.io.SerialPort;
 
 import java.io.IOException;

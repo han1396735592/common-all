@@ -1,4 +1,4 @@
-package cn.qqhxj.common.core;
+package cn.qqhxj.common.rxtx.core;
 
 /**
  * @author han xinjian

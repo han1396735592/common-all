@@ -1,4 +1,4 @@
-package cn.qqhxj.common;
+package cn.qqhxj.common.rxtx;
 
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;

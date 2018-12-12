@@ -1,6 +1,6 @@
-package cn.qqhxj.common.core;
+package cn.qqhxj.common.rxtx.core;
 
-import cn.qqhxj.common.SerialContext;
+import cn.qqhxj.common.rxtx.SerialContext;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 

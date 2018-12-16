@@ -1,6 +1,6 @@
 package cn.qqhxj.common.wsn.processor;
 
-import cn.qqhxj.common.rxtx.core.SerialDataProcessor;
+import cn.qqhxj.common.rxtx.processor.SerialDataProcessor;
 import cn.qqhxj.common.wsn.sensor.Sensor;
 
 /**

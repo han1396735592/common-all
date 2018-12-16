@@ -1,4 +1,4 @@
-package cn.qqhxj.common.rxtx.ReaderAndWrite;
+package cn.qqhxj.common.rxtx.reader;
 
 /**
  * @author han xinjian

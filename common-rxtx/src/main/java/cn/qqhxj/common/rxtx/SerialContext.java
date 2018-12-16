@@ -1,8 +1,10 @@
 package cn.qqhxj.common.rxtx;
 
-import cn.qqhxj.common.rxtx.ReaderAndWrite.SerialReader;
-import cn.qqhxj.common.rxtx.core.SerialDataParser;
-import cn.qqhxj.common.rxtx.core.SerialDataProcessor;
+
+import cn.qqhxj.common.rxtx.parse.SerialDataParser;
+import cn.qqhxj.common.rxtx.processor.SerialByteDataProcesser;
+import cn.qqhxj.common.rxtx.processor.SerialDataProcessor;
+import cn.qqhxj.common.rxtx.reader.SerialReader;
 import gnu.io.SerialPort;
 
 import java.io.IOException;
@@ -19,6 +21,16 @@ public class SerialContext {
     private static SerialPort serialPort;
 
     private static SerialReader serialReader;
+
+    private static SerialByteDataProcesser serialByteDataProcesser;
+
+    public static void setSerialByteDataProcesser(SerialByteDataProcesser serialByteDataProcesser) {
+        SerialContext.serialByteDataProcesser = serialByteDataProcesser;
+    }
+
+    public static SerialByteDataProcesser getSerialByteDataProcesser() {
+        return serialByteDataProcesser;
+    }
 
     private static Set<SerialDataParser> serialDataParserSet =
             Collections.synchronizedSet(new HashSet<SerialDataParser>());
@@ -54,6 +66,15 @@ public class SerialContext {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static boolean sendData(SerialSendDataEntity obj) {
+        try {
+            serialPort.getOutputStream().write(obj.getBytes());
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     public static SerialPort getSerialPort() {

@@ -1,4 +1,4 @@
-package cn.qqhxj.common.rxtx.ReaderAndWrite;
+package cn.qqhxj.common.rxtx.reader;
 
 import java.io.IOException;
 import java.io.InputStream;

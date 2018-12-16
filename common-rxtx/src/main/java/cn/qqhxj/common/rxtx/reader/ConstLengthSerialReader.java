@@ -1,6 +1,5 @@
-package cn.qqhxj.common.rxtx.ReaderAndWrite;
+package cn.qqhxj.common.rxtx.reader;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -66,20 +65,4 @@ public class ConstLengthSerialReader implements SerialReader {
         bytes = new byte[length];
     }
 
-
-    public static void main(String[] args) {
-
-        String str = "{as}{sa{asfasf}as{f}}saa{}s{f}";
-
-        SerialReader serialReader =
-                new VariableLengthSerialReader(new ByteArrayInputStream(str.getBytes()), '{', '}');
-
-        String string = serialReader.readString();
-
-        while (string != null) {
-            System.out.println(string);
-            string = serialReader.readString();
-        }
-
-    }
 }

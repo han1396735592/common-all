@@ -1,4 +1,4 @@
-package cn.qqhxj.common.rxtx.core;
+package cn.qqhxj.common.rxtx.parse;
 
 /**
  * @author han xinjian
@@ -6,5 +6,11 @@ package cn.qqhxj.common.rxtx.core;
  **/
 @FunctionalInterface
 public interface SerialDataParser<T> {
+    /**
+     * 根据数据转换为对象
+     *
+     * @param bytes
+     * @return
+     */
     T parse(byte[] bytes);
 }

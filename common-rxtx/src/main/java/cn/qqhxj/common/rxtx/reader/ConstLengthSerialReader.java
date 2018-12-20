@@ -21,6 +21,11 @@ public class ConstLengthSerialReader implements SerialReader {
 
 
     @Override
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    @Override
     public String readString() {
         byte[] bytes = readBytes();
         if (bytes != null) {

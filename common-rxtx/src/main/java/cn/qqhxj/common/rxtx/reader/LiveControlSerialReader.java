@@ -45,6 +45,11 @@ public class LiveControlSerialReader implements SerialReader {
     }
 
     @Override
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    @Override
     public byte[] readBytes() {
         try {
             byte read = ((byte) inputStream.read());

@@ -42,15 +42,31 @@ public class DefaultSerialDataListener implements SerialPortEventListener {
     private void dataProcessors(Object obj) {
         Set<SerialDataProcessor> dataProcessors = SerialContext.getSerialDataProcessorSet();
         for (SerialDataProcessor serialDataProcessor : dataProcessors) {
-            Type[] types = serialDataProcessor.getClass().getGenericInterfaces();
-            String typeName = ((ParameterizedType) types[0]).getActualTypeArguments()[0].getTypeName();
-            try {
-                Class<?> forName = Class.forName(typeName);
-                if (forName == obj.getClass()) {
-                    serialDataProcessor.processor(obj);
+            Type[] types = null;
+            if (serialDataProcessor.getClass().getSuperclass().equals(Object.class)) {
+                types = serialDataProcessor.getClass().getGenericInterfaces();
+            } else {
+                types = serialDataProcessor.getClass().getSuperclass().getGenericInterfaces();
+            }
+            for (Type type : types) {
+                if (type instanceof ParameterizedType) {
+                    ParameterizedType parameterizedType = (ParameterizedType) type;
+                    Type rawType = parameterizedType.getRawType();
+                    if (rawType instanceof Class) {
+                        boolean equals = rawType.equals(SerialDataProcessor.class);
+                        if (equals) {
+                            String typeName = ((ParameterizedType) type).getActualTypeArguments()[0].getTypeName();
+                            try {
+                                Class<?> forName = Class.forName(typeName);
+                                if (forName == obj.getClass()) {
+                                    serialDataProcessor.processor(obj);
+                                }
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
                 }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
         }
     }

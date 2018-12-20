@@ -3,6 +3,8 @@ package cn.qqhxj.common.wsn.parse;
 
 import cn.qqhxj.common.wsn.SensorDataInfo;
 import cn.qqhxj.common.wsn.SensorType;
+import cn.qqhxj.common.wsn.sensor.FlameSensor;
+import cn.qqhxj.common.wsn.sensor.FlammableGasSensor;
 import cn.qqhxj.common.wsn.sensor.Sensor;
 import cn.qqhxj.common.wsn.sensor.TemperatureAndHumiditySensor;
 
@@ -23,6 +25,12 @@ public class SensorDataParseImpl implements ISensorDataParse {
                 break;
             case E:
                 sensor = new TemperatureAndHumiditySensor(bytes);
+                break;
+            case J:
+                sensor = new FlammableGasSensor(bytes);
+                break;
+            case N:
+                sensor = new FlameSensor(bytes);
                 break;
             default:
                 sensor = null;

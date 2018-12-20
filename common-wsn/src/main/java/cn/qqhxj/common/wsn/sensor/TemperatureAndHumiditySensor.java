@@ -4,6 +4,7 @@ import cn.qqhxj.common.wsn.SensorDataInfo;
 import lombok.Data;
 
 /**
+ * 温湿度传感器
  * @author han xinjian
  * @date 2018-12-08 19:03
  **/
@@ -18,8 +19,8 @@ public class TemperatureAndHumiditySensor extends Sensor {
                 ((int) bytes[SensorDataInfo.DADA_LENGTH_INDEX + 2]) + "." + ((int) bytes[SensorDataInfo.DADA_LENGTH_INDEX + 3]));
     }
 
-    private float temperatureValue;
+    private Float temperatureValue;
 
-    private float humidityValue;
+    private Float humidityValue;
 
 }

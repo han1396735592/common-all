@@ -22,6 +22,11 @@ public class VariableLengthSerialReader implements SerialReader {
     private boolean haveNext = false;
 
 
+    @Override
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
     public VariableLengthSerialReader(InputStream inputStream) {
         this.inputStream = inputStream;
     }

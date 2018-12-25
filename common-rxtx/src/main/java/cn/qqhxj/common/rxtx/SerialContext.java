@@ -3,8 +3,8 @@ package cn.qqhxj.common.rxtx;
 
 import cn.qqhxj.common.rxtx.parse.SerialDataParser;
 import cn.qqhxj.common.rxtx.processor.SerialByteDataProcesser;
-import cn.qqhxj.common.rxtx.processor.SerialDataProcessor;
 import cn.qqhxj.common.rxtx.reader.SerialReader;
+import cn.qqhxj.common.rxtx.processor.SerialDataProcessor;
 import gnu.io.SerialPort;
 
 import java.io.IOException;

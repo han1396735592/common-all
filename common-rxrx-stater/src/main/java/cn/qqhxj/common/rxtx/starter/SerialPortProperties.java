@@ -1,15 +1,13 @@
-package cn.qqhxj.common.rxtx;
+package cn.qqhxj.common.rxtx.starter;
 
 import gnu.io.SerialPort;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 /**
  * @author han xinjian
  * @date 2018-12-16 11:53
  **/
 
-@Component
 @ConfigurationProperties(prefix = "serialport")
 public class SerialPortProperties {
 

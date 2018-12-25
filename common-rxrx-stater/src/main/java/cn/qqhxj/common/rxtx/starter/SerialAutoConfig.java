@@ -1,32 +1,31 @@
-package cn.qqhxj.common.rxtx;
+package cn.qqhxj.common.rxtx.starter;
 
-import cn.qqhxj.common.rxtx.parse.SerialDataParser;
+import cn.qqhxj.common.rxtx.DefaultSerialDataListener;
+import cn.qqhxj.common.rxtx.SerialUtils;
 import cn.qqhxj.common.rxtx.parse.StringSerialDataParser;
-import cn.qqhxj.common.rxtx.processor.SerialDataProcessor;
-import cn.qqhxj.common.rxtx.processor.StringSerialDataProcessor;
 import cn.qqhxj.common.rxtx.reader.SerialReader;
 import cn.qqhxj.common.rxtx.reader.VariableLengthSerialReader;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEventListener;
-import org.springframework.beans.factory.InitializingBean;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.ApplicationContext;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * @author han xinjian
  * @date 2018-12-16 11:55
  **/
-@Component
-public class SerialAutoConfig implements InitializingBean {
-    @Autowired
-    ApplicationContext applicationContext;
-
+@Slf4j
+@Configuration
+@EnableConfigurationProperties(SerialPortProperties.class)
+@ConditionalOnClass(SerialPort.class)
+public class SerialAutoConfig {
 
     @Autowired
     private SerialPortProperties serialPortProperties;
@@ -34,7 +33,9 @@ public class SerialAutoConfig implements InitializingBean {
     @Bean
     @ConditionalOnMissingBean
     public SerialPortEventListener serialPortEventListener() {
-        return new DefaultSerialDataListener();
+        SerialPortEventListener dataListener = new DefaultSerialDataListener();
+        log.debug("配置 SerialPortEventListener = {}", dataListener);
+        return dataListener;
     }
 
     @Bean
@@ -45,6 +46,7 @@ public class SerialAutoConfig implements InitializingBean {
             serialPort = SerialUtils.connect(serialPortProperties.getPortName(), serialPortProperties.getBaudRgot());
             serialPort.addEventListener(serialPortEventListener);
             serialPort.notifyOnDataAvailable(true);
+            log.debug("配置 SerialPort = {}", serialPort);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,6 +60,7 @@ public class SerialAutoConfig implements InitializingBean {
         SerialReader serialReader = null;
         try {
             serialReader = new VariableLengthSerialReader(serialPort.getInputStream(), '{', '}');
+            log.debug("配置 SerialReader ={}", serialReader);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,18 +74,8 @@ public class SerialAutoConfig implements InitializingBean {
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public StringSerialDataProcessor stringSerialDataProcessor() {
-        return new StringSerialDataProcessor();
-    }
-
-    public void afterPropertiesSet() throws Exception {
-        Map<String, SerialDataParser> beansOfType = applicationContext.getBeansOfType(SerialDataParser.class);
-        SerialContext.getSerialDataParserSet().addAll(beansOfType.values());
-        Map<String, SerialDataProcessor> beansOfType1 = applicationContext.getBeansOfType(SerialDataProcessor.class);
-        SerialContext.getSerialDataProcessorSet().addAll(beansOfType1.values());
-        SerialContext.setSerialPort(applicationContext.getBean(SerialPort.class));
-        SerialContext.setSerialReader(applicationContext.getBean(SerialReader.class));
+    public SerialContentBuilder serialContentBuilder() {
+        return new SerialContentBuilder();
     }
 
 }

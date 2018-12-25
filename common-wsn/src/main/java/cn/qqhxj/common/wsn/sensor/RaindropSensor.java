@@ -5,20 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 火焰传感器
+ * 雨滴传感器
  *
  * @author han xinjian
  * @date 2018-12-19 17:06
  **/
 @Data
 @NoArgsConstructor
-public class FlameSensor extends Sensor {
+public class RaindropSensor extends Sensor {
 
-    protected Boolean normal;
+    protected Boolean rainy;
 
-    public FlameSensor(byte[] bytes) {
+    public RaindropSensor(byte[] bytes) {
         super(bytes);
-        byte bt = bytes[SensorDataInfo.BEGIN_DATA_LENGTH + 1];
-        normal = bt == 0x00;
+        rainy = bytes[SensorDataInfo.BEGIN_DATA_LENGTH + 1] == 0x01;
     }
 }

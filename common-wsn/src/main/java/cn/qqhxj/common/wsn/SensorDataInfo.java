@@ -10,7 +10,7 @@ public final class SensorDataInfo {
 
     public static byte[] header = new byte[]{(byte) 0xFA, (byte) 0xFD};
 
-    public static int DADA_LENGTH_INDEX = 7;
+    public static int DADA_LENGTH_INDEX = 1;
 
     public static int PARENT_ADDRESS_START_INDEX = 2;
 

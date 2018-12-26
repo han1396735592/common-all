@@ -11,7 +11,7 @@
         <module>common-web</module>
         <module>common-rxtx</module>
         <module>common-wsn</module>
-        <module>common-rxrx-stater</module>
+        <module>common-rxrx-staterer</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -52,13 +52,6 @@ public class SerialContext {
 
     public static void setSerialPort(SerialPort serialPort) {
         SerialContext.serialPort = serialPort;
-        if (serialReader != null) {
-            try {
-                serialReader.setInputStream(serialPort.getInputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public static byte[] readData() {

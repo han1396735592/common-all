@@ -1,5 +1,7 @@
 package cn.qqhxj.common.rxtx.reader;
 
+import cn.qqhxj.common.rxtx.SerialContext;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -9,8 +11,6 @@ import java.io.InputStream;
  **/
 public class ConstLengthSerialReader implements SerialReader {
 
-    private InputStream inputStream;
-
     private int length;
 
     private int index = 0;
@@ -19,11 +19,6 @@ public class ConstLengthSerialReader implements SerialReader {
 
     private boolean raed = true;
 
-
-    @Override
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
 
     @Override
     public String readString() {
@@ -40,7 +35,7 @@ public class ConstLengthSerialReader implements SerialReader {
     public byte[] readBytes() {
         for (; index < length; index++) {
             try {
-                int read = inputStream.read();
+                int read = SerialContext.getSerialPort().getInputStream().read();
                 if (read == -1) {
                     break;
                 } else {
@@ -58,14 +53,12 @@ public class ConstLengthSerialReader implements SerialReader {
         return null;
     }
 
-    public ConstLengthSerialReader(InputStream inputStream) {
-        this.inputStream = inputStream;
+    public ConstLengthSerialReader() {
         length = 24;
         bytes = new byte[length];
     }
 
-    ConstLengthSerialReader(InputStream inputStream, int length) {
-        this.inputStream = inputStream;
+    ConstLengthSerialReader(int length) {
         this.length = length;
         bytes = new byte[length];
     }

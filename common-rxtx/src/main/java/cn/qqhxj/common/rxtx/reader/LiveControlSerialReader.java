@@ -1,6 +1,7 @@
 package cn.qqhxj.common.rxtx.reader;
 
-import java.io.InputStream;
+import cn.qqhxj.common.rxtx.SerialContext;
+
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
@@ -18,16 +19,13 @@ public class LiveControlSerialReader implements SerialReader {
 
     private int allLength = 0;
 
-    private InputStream inputStream;
-
     private int length;
 
     private ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
     private boolean notOver = false;
 
-    public LiveControlSerialReader(InputStream inputStream, int flagIndex, int dataLengthIndex, byte... startChat) {
-        this.inputStream = inputStream;
+    public LiveControlSerialReader(int flagIndex, int dataLengthIndex, byte... startChat) {
         this.startChat = startChat;
         this.flagIndex = flagIndex;
         this.dataLengthIndex = dataLengthIndex;
@@ -45,14 +43,9 @@ public class LiveControlSerialReader implements SerialReader {
     }
 
     @Override
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-    @Override
     public byte[] readBytes() {
         try {
-            byte read = ((byte) inputStream.read());
+            byte read = ((byte) SerialContext.getSerialPort().getInputStream().read());
             int index = Arrays.binarySearch(startChat, read);
             if (index >= 0) {
                 byteBuffer.put((byte) read);

@@ -1,7 +1,8 @@
 package cn.qqhxj.common.rxtx.reader;
 
+import cn.qqhxj.common.rxtx.SerialContext;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
@@ -11,7 +12,6 @@ import java.util.Arrays;
  **/
 public class VariableLengthSerialReader implements SerialReader {
 
-    private InputStream inputStream;
 
     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
@@ -22,17 +22,7 @@ public class VariableLengthSerialReader implements SerialReader {
     private boolean haveNext = false;
 
 
-    @Override
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-    public VariableLengthSerialReader(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-    public VariableLengthSerialReader(InputStream inputStream, char startChar, char endChar) {
-        this(inputStream);
+    public VariableLengthSerialReader(char startChar, char endChar) {
         this.startChar = startChar;
         this.endChar = endChar;
     }
@@ -54,7 +44,7 @@ public class VariableLengthSerialReader implements SerialReader {
         int ch = 0;
         while (ch != -1) {
             try {
-                ch = inputStream.read();
+                ch = SerialContext.getSerialPort().getInputStream().read();
                 if (ch == startChar) {
                     byteBuffer.put((byte) ch);
                     haveNext = true;

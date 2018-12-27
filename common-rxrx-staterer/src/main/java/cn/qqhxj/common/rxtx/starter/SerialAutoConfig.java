@@ -1,7 +1,6 @@
 package cn.qqhxj.common.rxtx.starter;
 
 import cn.qqhxj.common.rxtx.DefaultSerialDataListener;
-import cn.qqhxj.common.rxtx.SerialUtils;
 import cn.qqhxj.common.rxtx.parse.StringSerialDataParser;
 import cn.qqhxj.common.rxtx.processor.SerialByteDataProcesser;
 import cn.qqhxj.common.rxtx.reader.SerialReader;
@@ -15,8 +14,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.IOException;
 
 /**
  * @author han xinjian
@@ -39,32 +36,14 @@ public class SerialAutoConfig {
         return dataListener;
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public SerialPort serialPort(SerialPortEventListener serialPortEventListener) {
-        SerialPort serialPort = null;
-        try {
-            serialPort = SerialUtils.connect(serialPortProperties.getPortName(), serialPortProperties.getBaudRgot());
-            serialPort.addEventListener(serialPortEventListener);
-            serialPort.notifyOnDataAvailable(true);
-            log.debug("配置 SerialPort = {}", serialPort);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return serialPort;
-    }
 
 
     @Bean
     @ConditionalOnMissingBean
-    public SerialReader serialReader(SerialPort serialPort) {
+    public SerialReader serialReader() {
         SerialReader serialReader = null;
-        try {
-            serialReader = new VariableLengthSerialReader(serialPort.getInputStream(), '{', '}');
-            log.debug("配置 SerialReader ={}", serialReader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        serialReader = new VariableLengthSerialReader('{', '}');
+        log.debug("配置 SerialReader ={}", serialReader);
         return serialReader;
     }
 

@@ -6,12 +6,12 @@
 
     <groupId>cn.qqhxj.common</groupId>
     <artifactId>common-all</artifactId>
-    <version>1.0-RELEASES</version>
+    <version>1.1-RELEASES</version>
     <modules>
         <module>common-web</module>
         <module>common-rxtx</module>
         <module>common-wsn</module>
-        <module>common-rxrx-staterer</module>
+        <module>common-rxtx-starter</module>
     </modules>
     <packaging>pom</packaging>
 

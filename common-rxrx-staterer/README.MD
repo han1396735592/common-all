@@ -2,6 +2,7 @@ rxtx-starter
 
 java 对串口的读取的快速方法。
 ##使用方法
+[示例项目](https://github.com/han1396735592/rxtx-demo)
 
 1. 引入依赖
 ```

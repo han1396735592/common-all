@@ -1,0 +1,38 @@
+{
+  "groups": [
+    {
+      "name": "serialport",
+      "type": "cn.qqhxj.common.rxtx.starter.SerialPortProperties",
+      "sourceType": "cn.qqhxj.common.rxtx.starter.SerialPortProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "serialport.baud-rgot",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.qqhxj.common.rxtx.starter.SerialPortProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "serialport.data-bits",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.qqhxj.common.rxtx.starter.SerialPortProperties"
+    },
+    {
+      "name": "serialport.parity",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.qqhxj.common.rxtx.starter.SerialPortProperties"
+    },
+    {
+      "name": "serialport.port-name",
+      "type": "java.lang.String",
+      "sourceType": "cn.qqhxj.common.rxtx.starter.SerialPortProperties"
+    },
+    {
+      "name": "serialport.stop-bits",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.qqhxj.common.rxtx.starter.SerialPortProperties"
+    }
+  ],
+  "hints": []
+}

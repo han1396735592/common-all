@@ -5,7 +5,7 @@
     <parent>
         <artifactId>common-all</artifactId>
         <groupId>cn.qqhxj.common</groupId>
-        <version>1.0-RELEASES</version>
+        <version>1.1-RELEASES</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>common-web</artifactId>
